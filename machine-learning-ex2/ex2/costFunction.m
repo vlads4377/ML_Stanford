@@ -22,7 +22,13 @@ grad = zeros(size(theta));
 
 
 
+sigmoid = sigmoid(X * theta);
 
+J = 1 / m * sum(-y.*log(sigmoid) - (1 - y).* log(1 - sigmoid));
+
+for i = 1:size(theta, 1)
+	grad(i) = 1 / m * sum((sigmoid - y) .* X(:, i));
+end
 
 
 
